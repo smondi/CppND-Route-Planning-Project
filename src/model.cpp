@@ -5,6 +5,7 @@
 #include <cmath>
 #include <algorithm>
 #include <assert.h>
+#include <limits>
 
 static Model::Road::Type String2RoadType(std::string_view type)
 {
@@ -278,4 +279,19 @@ void Model::BuildRings( Multipolygon &mp )
 
     process(mp.outer);
     process(mp.inner);
+}
+
+Model::Node Model::FindClosestNode(float x, float y)
+{
+    Model::Node closestNode = m_Nodes[1];
+    double minDistance = std::numeric_limits<double>::max();    
+    for (auto &node : m_Nodes) {
+        double distance = std::abs(x - node.x) + std::abs(y - node.y);
+        if (distance < minDistance) {
+            minDistance = distance;
+            closestNode.x = node.x;
+            closestNode.y = node.y;
+        }
+    }
+    return closestNode;
 }

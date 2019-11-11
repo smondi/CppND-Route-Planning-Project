@@ -61,6 +61,8 @@ private:
     void AdjustCoordinates();
     void BuildRings( Multipolygon &mp );
     void LoadData(const std::vector<std::byte> &xml);
+
+    Node FindClosestNode(float, float);
     
     std::vector<Node> m_Nodes;
     std::vector<Way> m_Ways;
