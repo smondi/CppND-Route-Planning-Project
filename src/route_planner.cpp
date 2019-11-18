@@ -38,14 +38,13 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
     current_node->FindNeighbors();
     for (auto node: current_node->neighbors) {
         node->parent = current_node;
-        node->g_value = 0;
+        node->g_value = current_node->g_value + 1;
         node->h_value = this->CalculateHValue(current_node);
         for (auto neighbor: current_node->neighbors) {
             this->open_list.push_back(neighbor);
             neighbor->visited = true;
         }
     }
-
 }
 
 
