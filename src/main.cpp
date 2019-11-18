@@ -60,13 +60,13 @@ int main(int argc, const char **argv)
     float end_x = 0.0f;
     float end_y = 0.0f;
 
-    std::cout << "Enter Start Point X Coordinate: ";
+    std::cout << "Enter Start Point X Coordinate (0 < X < 100):";
     std::cin >> start_x;
-    std::cout << "Enter Start Point Y Coordinate: ";
+    std::cout << "Enter Start Point Y Coordinate (0 < Y < 100):";
     std::cin >> start_y;
-    std::cout << "Enter End Point X Coordinate: ";
+    std::cout << "Enter End Point X Coordinate (0 < X < 100):";
     std::cin >> end_x;
-    std::cout << "Enter End Point Y Coordinate: ";
+    std::cout << "Enter End Point Y Coordinate (0 < Y < 100):";
     std::cin >> end_y;
 
     // Build Model.
