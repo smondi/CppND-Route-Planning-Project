@@ -107,8 +107,8 @@ TEST_F(RoutePlannerTest, TestConstructFinalPath) {
 }
 
 
-// Test the AStarSearch method.
-TEST_F(RoutePlannerTest, TestAStarSearch) {
+//Test the AStarSearch method.
+TEST_F(RoutePlannerTest, TestAStarSearch) {    
     route_planner.AStarSearch();
     EXPECT_EQ(model.path.size(), 33);
     RouteModel::Node path_start = model.path.front();
