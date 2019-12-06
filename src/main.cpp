@@ -60,21 +60,35 @@ int main(int argc, const char **argv)
     float end_x = 0.0f;
     float end_y = 0.0f;
 
-    // std::cout << "Enter Start Point X Coordinate (0 < X < 100):";
-    // std::cin >> start_x;
-    // std::cout << "Enter Start Point Y Coordinate (0 < Y < 100):";
-    // std::cin >> start_y;
-    // std::cout << "Enter End Point X Coordinate (0 < X < 100):";
-    // std::cin >> end_x;
-    // std::cout << "Enter End Point Y Coordinate (0 < Y < 100):";
-    // std::cin >> end_y;
+    do {
+        std::cout << "Enter Start Point X Coordinate (0 <= X <= 100):";        
+        std::cin >> start_x;
+        // start_x *= 1.0f;
+    } while (start_x < 0 || start_x > 100);
+    
+    do {
+        std::cout << "Enter Start Point Y Coordinate (0 <= Y <= 100):";        
+        std::cin >> start_y;
+        // start_y *= 1.0f;
+    } while (start_y < 0 || start_y > 100);
+
+    do {
+        std::cout << "Enter End Point X Coordinate (0 <= X <= 100):";        
+        std::cin >> end_x;
+    } while (end_x < 0 || end_x > 100);
+
+    do {
+        std::cout << "Enter End Point Y Coordinate (0 <= Y <= 100):";        
+        std::cin >> end_y;
+    } while (end_y < 0 || end_y > 100);
+
 
     // Build Model.
     RouteModel model{osm_data};
 
     // Create RoutePlanner object and perform A* search.
-    RoutePlanner route_planner{model, 10, 10, 90, 90};
-    // RoutePlanner route_planner{model, start_x, start_y, end_x, end_y};
+    RoutePlanner route_planner{model, start_x, start_y, end_x, end_y};
+    // RoutePlanner route_planner{model, 10.0, 10.0, 90.0, 90.0};
     route_planner.AStarSearch();
 
     std::cout << "Distance: " << route_planner.GetDistance() << " meters. \n";
